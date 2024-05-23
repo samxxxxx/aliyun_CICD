@@ -26,6 +26,6 @@ services:
       - "9084:80"
     restart: always
     volumes:
-      - ./out:/app
+      - ./app:/app
     working_dir: /app
     command: ["dotnet", "WebApplication1.dll"]
