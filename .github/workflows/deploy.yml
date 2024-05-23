@@ -16,6 +16,17 @@ jobs:
         with:
           ref: master  # 指定检出 master 分支
 
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0.0'  # 确保使用适当的 .NET Core 版本
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build the project
+        run: dotnet publish -c Release -o out
+
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.5.3
         with:
