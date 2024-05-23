@@ -17,7 +17,7 @@
 
 services:
   aliyuncicdservice:
-    image: mcr.microsoft.com/dotnet/aspnet:7.0
+    image: WebApplication1:latest
     build:
       context: .
       dockerfile: Dockerfile
