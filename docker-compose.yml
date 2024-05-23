@@ -18,9 +18,10 @@
 services:
   aliyuncicdservice:
     #image: WebApplication1:latest
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: aliyun_cicd/webapp:latest
     ports:
       - "9084:80"
     restart: always
