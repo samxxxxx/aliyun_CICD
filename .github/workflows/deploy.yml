@@ -26,6 +26,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no root@119.12.165.28 << 'EOF'
           cd /root/deploy/aliyuncicd/deploy
-          docker-compose down
-          docker-compose up -d
+          docker compose down
+          docker compose up -d
           EOF
