@@ -16,7 +16,7 @@
 # version: '3.8'
 
 services:
-  aliyuncicdservice:
+  webapp:
     #image: WebApplication1:latest
     build:
       context: .
