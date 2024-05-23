@@ -4,28 +4,7 @@ on:
   push:
     branches:
       - master
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-        
-如果你的仓库只有 master 分支，你可以在 GitHub Actions Workflow 中指定 master 分支作为触发条件和检出分支。以下是一个完整的示例，展示如何设置 actions/checkout 动作以从 master 分支检出代码，并在后续步骤中进行操作。
-
-示例 GitHub Actions Workflow
-yaml
-复制代码
-name: Deploy to Cloud Server
-
-# 触发条件：当推送到 master 分支时触发工作流
-on:
-  push:
-    branches:
-      - master
-
+      
 jobs:
   deploy:
     runs-on: ubuntu-latest
