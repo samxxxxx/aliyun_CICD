@@ -17,7 +17,7 @@
 
 services:
   aliyuncicdservice:
-    image: WebApplication1:latest
+    #image: WebApplication1:latest
     build:
       context: .
       dockerfile: Dockerfile
