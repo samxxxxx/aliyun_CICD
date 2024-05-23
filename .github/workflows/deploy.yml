@@ -43,3 +43,10 @@ jobs:
           docker compose down
           docker compose up -d --build --remove-orphans
           EOF
+
+      # 清理无用的镜像
+      - name: Cleanup Docker images
+        run: |
+          ssh -o StrictHostKeyChecking=no root@119.12.165.28 << 'EOF'
+          docker image prune -f
+          EOF
