@@ -25,7 +25,9 @@ services:
     ports:
       - "9084:80"
     restart: always
-    volumes:
-      - ./app:/app
+
+    # 这里的volumes 映射的目录是宿主机的，挂载卷的选择：如果在开发环境中使用挂载卷，可以保留 volumes 指令。如果在生产环境中，可以去掉挂载卷，以避免覆盖容器内的文件。
+    #volumes:
+    #  - ./app:/app
     working_dir: /app
     command: ["dotnet", "WebApplication1.dll"]
