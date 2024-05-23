@@ -20,12 +20,12 @@ jobs:
 
       - name: Copy files to server
         run: |
-          rsync -avz -e "ssh -o StrictHostKeyChecking=no" . root@119.12.165.28:/path/to/deploy
+          rsync -avz -e "ssh -o StrictHostKeyChecking=no" . root@119.12.165.28:/deploy/aliyuncicd/deploy
 
       - name: Deploy application
         run: |
           ssh -o StrictHostKeyChecking=no root@119.12.165.28 << 'EOF'
-          cd /path/to/deploy
+          cd /deploy/aliyuncicd/deploy
           docker-compose down
           docker-compose up -d
           EOF
