@@ -1,19 +1,24 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-# Use the official .NET Core SDK image to build the app
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /source
-
-# Copy csproj and restore as distinct layers
-COPY *.csproj .
-RUN dotnet restore
-
-# Copy everything else and build the app
-COPY . .
-RUN dotnet publish -c Release -o /app
-
-# Use the official ASP.NET Core runtime as the base image
-FROM mcr.microsoft.com/dotnet/aspnet:7.0
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-COPY --from=build /app .
+EXPOSE 80
+EXPOSE 443
+
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["WebApplication1.csproj", "."]
+RUN dotnet restore "./././WebApplication1.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "./WebApplication1.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./WebApplication1.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]
