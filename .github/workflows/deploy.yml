@@ -59,4 +59,4 @@ jobs:
     steps:
       - name: Send mail
         run: |
-          ehco "Deploy to server success!"
+          echo "Deploy to server success!"
