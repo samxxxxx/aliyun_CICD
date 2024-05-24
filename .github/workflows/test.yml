@@ -28,10 +28,10 @@ jobs:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore .\test\CICD_TestProject\CICD_TestProject.csproj
       
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build .\test\CICD_TestProject\CICD_TestProject.csproj --configuration Release --no-restore
     
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test .\test\CICD_TestProject\CICD_TestProject.csproj --no-restore --verbosity normal
