@@ -33,8 +33,12 @@ jobs:
         run: dotnet build --configuration Release
 
       # 运行测试
-      - name: Run tests
-        run: dotnet test --no-build --verbosity normal
+      - name: Run tests        
+        run: |
+          cd test/CICD_TestProject
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet test --no-build --verbosity normal
 
   deploy:
     runs-on: ubuntu-latest
