@@ -54,5 +54,5 @@ jobs:
     
     - name: Test on windows
       if: matrix.os == 'windows-latest'
-      shell: bash
+      shell: pwsh
       run: dotnet test test\CICD_TestProject\CICD_TestProject.csproj --no-restore --verbosity normal
