@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8D220664-516
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{302610FC-CD4D-47EF-8609-9ECBFC9D5799}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CICIWeb", "src\CICIWeb\CICIWeb.csproj", "{B0991770-1724-4A05-BEBF-64AE3B2C6E2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CICDWeb", "src\CICDWeb\CICDWeb.csproj", "{B0991770-1724-4A05-BEBF-64AE3B2C6E2C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{895DF08E-4C17-4AA5-A724-29B30DC45CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{895DF08E-4C17-4AA5-A724-29B30DC45CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{895DF08E-4C17-4AA5-A724-29B30DC45CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{895DF08E-4C17-4AA5-A724-29B30DC45CC7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C2B34EE8-BCDB-4954-8BA2-64E1AF316E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C2B34EE8-BCDB-4954-8BA2-64E1AF316E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C2B34EE8-BCDB-4954-8BA2-64E1AF316E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -34,7 +30,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{895DF08E-4C17-4AA5-A724-29B30DC45CC7} = {8D220664-5166-4852-84C1-FFF95953665F}
 		{C2B34EE8-BCDB-4954-8BA2-64E1AF316E55} = {302610FC-CD4D-47EF-8609-9ECBFC9D5799}
 		{B0991770-1724-4A05-BEBF-64AE3B2C6E2C} = {8D220664-5166-4852-84C1-FFF95953665F}
 	EndGlobalSection
