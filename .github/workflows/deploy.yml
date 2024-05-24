@@ -8,7 +8,7 @@ on:
 jobs:
 
   
-  deploy:
+  deploy-to-server:
     runs-on: ubuntu-latest
 
     steps:
@@ -52,3 +52,11 @@ jobs:
           ssh -o StrictHostKeyChecking=no root@119.12.165.28 << 'EOF'
           docker image prune -f
           EOF
+
+  send-mail:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send mail
+        run: |
+          ehco "Deploy to server success!"
