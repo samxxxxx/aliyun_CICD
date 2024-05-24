@@ -4,10 +4,15 @@ version: '3.4'
 
 services:
   cicdweb:
-    image: aliyun_cicd/webapp:latest
+    image: cicdweb
     build:
       context: .
       dockerfile: src/CICDWeb/Dockerfile
+      args:
+        - configuration=Debug
     ports:
-      - "9084:80"
-    restart: always
+      - 5137:5137
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
