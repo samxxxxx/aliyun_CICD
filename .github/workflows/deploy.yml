@@ -49,7 +49,7 @@ jobs:
       # 清理无用的镜像
       - name: Cleanup Docker images
         run: |
-          ssh -o StrictHostKeyChecking=no root@119.12.165.28 << 'EOF'
+          ssh -o StrictHostKeyChecking=no ${{vars.ECS_ACCOUNT}}@${{vars.ECS_IP_ADDRESS}} << 'EOF'
           docker image prune -f
           EOF
 
