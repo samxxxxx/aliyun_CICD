@@ -18,7 +18,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ windows-latest]
+        os: [ubuntu-latest, windows-latest]
 
     steps:
     - uses: actions/checkout@v3
@@ -27,11 +27,32 @@ jobs:
       with:
         dotnet-version: ${{ env.DOTNET_VERSION }}
 
-    - name: Install dependencies
+    - name: Install dependencies on ubuntu
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: dotnet restore ./test/CICD_TestProject/CICD_TestProject.csproj
+
+    - name: Install dependencies on windows
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
       run: dotnet restore test\CICD_TestProject\CICD_TestProject.csproj
-      
-    - name: Build
+
+    - name: Build on ubuntu
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: dotnet build ./test/CICD_TestProject/CICD_TestProject.csproj --configuration Release --no-restore
+    
+    - name: Build on windows
+      if: matrix.os == 'windows-latest'
+      shell: pwsh
       run: dotnet build test\CICD_TestProject\CICD_TestProject.csproj --configuration Release --no-restore
     
-    - name: Test
+    - name: Test on ubuntu
+      if: matrix.os == 'ubuntu-latest'
+      shell: bash
+      run: dotnet test ./test/CICD_TestProject/CICD_TestProject.csproj --no-restore --verbosity normal
+    
+    - name: Test on windows
+      if: matrix.os == 'windows-latest'
+      shell: bash
       run: dotnet test test\CICD_TestProject\CICD_TestProject.csproj --no-restore --verbosity normal
