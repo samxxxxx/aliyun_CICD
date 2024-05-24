@@ -1,0 +1,32 @@
+name: test project
+
+on:
+  push:
+    branches:
+      - master
+jobs:
+  # 定义测试作业
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 检出 master 分支上的代码
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      # 设置 .NET 环境
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: '7.0'  # 确保使用适当的 .NET Core 版本
+
+      # 运行测试
+      - name: Run tests        
+        run: |
+          cd test/CICD_TestProject
+          dotnet restore
+          dotnet build --configuration Release
+          dotnet test --no-build --verbosity normal
+      
