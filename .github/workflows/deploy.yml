@@ -55,7 +55,8 @@ jobs:
 
   send-mail:
     runs-on: ubuntu-latest
-
+    needs: deploy-to-server
+    if: ${{ success() && github.event_name == 'push'}}  # 只有上一步成功并且是push操作，才发送邮件
     steps:
       - name: Send mail
         run: |
